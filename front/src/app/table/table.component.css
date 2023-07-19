@@ -1,0 +1,11 @@
+table {
+  max-width: 90%;
+}
+
+mat-cell[contenteditable="true"] {
+  padding: 8px;
+  outline: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

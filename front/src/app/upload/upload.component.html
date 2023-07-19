@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="input">
+    <input type="file" (change)="onFileSelected($event)" accept=".xlsx" />
+  </div>
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="uploadFile()"
+    [disabled]="!selectedFile"
+  >
+    <mat-icon>cloud_upload</mat-icon> Upload
+  </button>
+</div>

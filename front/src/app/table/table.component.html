@@ -1,0 +1,141 @@
+<div>
+  <app-upload (fileUploaded)="onFileUploaded()"></app-upload>
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource">
+      <!-- Column definitions -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Nom du groupe</th>
+        <td
+          mat-cell
+          *matCellDef="let row"
+          [attr.contenteditable]="row.editable"
+          (input)="onCellEdit(row, 'name', $event)"
+        >
+          {{ row.name }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="country">
+        <th mat-header-cell *matHeaderCellDef>Origine</th>
+        <td
+          mat-cell
+          *matCellDef="let row"
+          [attr.contenteditable]="row.editable"
+          (input)="onCellEdit(row, 'country', $event)"
+        >
+          {{ row.country }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="city">
+        <th mat-header-cell *matHeaderCellDef>Ville</th>
+        <td
+          mat-cell
+          *matCellDef="let row"
+          [attr.contenteditable]="row.editable"
+          (input)="onCellEdit(row, 'city', $event)"
+        >
+          {{ row.city }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="year">
+        <th mat-header-cell *matHeaderCellDef>Année début</th>
+        <td
+          mat-cell
+          *matCellDef="let row"
+          [attr.contenteditable]="row.editable"
+          (input)="onCellEdit(row, 'year', $event)"
+        >
+          {{ row.year }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="splitYear">
+        <th mat-header-cell *matHeaderCellDef>Année séparation</th>
+        <td
+          mat-cell
+          *matCellDef="let row"
+          [attr.contenteditable]="row.editable"
+          (input)="onCellEdit(row, 'splitYear', $event)"
+        >
+          {{ row.splitYear }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="founders">
+        <th mat-header-cell *matHeaderCellDef>Fondateurs</th>
+        <td
+          mat-cell
+          *matCellDef="let row"
+          [attr.contenteditable]="row.editable"
+          (input)="onCellEdit(row, 'founders', $event)"
+        >
+          {{ row.founders }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="membersCount">
+        <th mat-header-cell *matHeaderCellDef>Membres</th>
+        <td
+          mat-cell
+          *matCellDef="let row"
+          [attr.contenteditable]="row.editable"
+          (input)="onCellEdit(row, 'membersCount', $event)"
+        >
+          {{ row.membersCount }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="musicalStyle">
+        <th mat-header-cell *matHeaderCellDef>Courant musical</th>
+        <td
+          mat-cell
+          *matCellDef="let row"
+          [attr.contenteditable]="row.editable"
+          (input)="onCellEdit(row, 'musicalStyle', $event)"
+        >
+          {{ row.musicalStyle }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef>Présentation</th>
+        <td
+          mat-cell
+          *matCellDef="let row"
+          [attr.contenteditable]="row.editable"
+          (input)="onCellEdit(row, 'description', $event)"
+        >
+          {{ row.description }}
+        </td>
+      </ng-container>
+
+      <!-- Actions column -->
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>Actions</th>
+        <td mat-cell *matCellDef="let row">
+          <button
+            mat-icon-button
+            color="primary"
+            *ngIf="!row.editable"
+            (click)="onEdit(row)"
+          >
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button
+            mat-icon-button
+            color="accent"
+            *ngIf="row.editable"
+            (click)="onSave(row)"
+          >
+            <mat-icon>save</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="deleteRow(row.id)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <!-- Table columns -->
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+    <mat-paginator
+      [pageSizeOptions]="[5, 10, 25, 100]"
+      showFirstLastButtons
+    ></mat-paginator>
+  </div>
+</div>
